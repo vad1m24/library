@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Library - Book page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../js/jquery-3.5.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../../">Home</a> | <a href="../books/">All books</a> | <a
+				href="../books/addbook">Add book</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Book details:</h1>
+		<table>
+			<caption></caption>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+				</tr>
+			<tbody>
+				<tr>
+					<td rowspan="6"><img th:if="${book.bookDetailsDto.picture}"
+						th:src="@{${book.bookDetailsDto.picture}}" class="shadow-img"
+						height="400" alt="Cover" /> <img
+						th:unless="${book.bookDetailsDto.picture}"
+						src="http://localhost:8080/img/coverDefault.jpg"
+						class="shadow-img" height="400" alt="Cover" /></td>
+					<td class="font-weight-bold">Book ISBN</td>
+					<td th:text="${book.isbn}"></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Book Available</td>
+					<td th:text="${book.quantityAvailable}"></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Rating</td>
+					<td th:text="${#numbers.formatDecimal(book.rating,1,2)}"></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Department</td>
+					<td><span th:each="department : ${book.departments}"> <span
+							th:text="${department.name}"> </span>
+					</span></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Name</td>
+					<td th:text="${book.bookDetailsDto.name}"></td>
+				</tr>
+
+				<tr>
+					<td class="font-weight-bold">Author</td>
+					<td th:text="${book.bookDetailsDto.author}"></td>
+				</tr>
+				<tr>
+					<td style="text-align: justify" colspan="3"><span
+						class="font-weight-bold">Description: </span> <span
+						th:text="''+${book.bookDetailsDto.description}"></span></td>
+				</tr>
+				<tr>
+					<td><a sec:authorize="isAuthenticated()"
+						th:href="@{'edit/' + ${book.id}}" class="btn btn-link">Edit</a> <a
+						sec:authorize="hasRole('ADMIN')"
+						th:href="@{'delete/' + ${book.id}}" class="btn btn-link">Delete</a>
+					<td></td>
+					<td><div th:if="${book.quantityAvailable >= 1}">
+							<button sec:authorize="isAuthenticated()" type="button"
+								class="btn btn-link" data-toggle="modal" data-target="#modal">Make
+								order</button>
+							<div class="modal fade" id="modal" tabindex="-1" role="dialog"
+								aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Make
+												order</h5>
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h5>Are you sure?</h5>
+											<form action="#"
+												th:action="@{'../orders/addorder/' + ${book.id}}"
+												th:object="${book}" method="POST">
+												<div class="modal-footer">
+													<input class="btn btn-light" type="submit"
+														value="Take the book" />
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div th:unless="${book.quantityAvailable >= 1}">Sorry, this
+							book has already been taken) come in a week</div></td>
+			</tbody>
+		</table>
+		<hr />
+		<h3>Feedbacks:</h3>
+		<div class="container" th:each="feedback : ${listFeedbacks}">
+
+			<img th:if="${feedback.userDto.img}"
+				th:src="@{'data:image/png;base64,' + ${feedback.userDto.img}}"
+				style="width: 90px" alt="Avatar" /> <img
+				th:unless="${feedback.userDto.img}"
+				src="http://localhost:8080/img/avatarDefault.png"
+				style="width: 90px" alt="Avatar" />
+			<p>
+				<span th:text="${feedback.userName}"></span> &#160; <span
+					class="fa fa-star checked"></span> <span
+					th:text="${feedback.rating}"></span>
+			</p>
+
+			<p th:text="${feedback.comment}"></p>
+		</div>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

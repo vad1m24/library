@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Add Feedback</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper" style="padding: 50px 0">
+		<h1 class="form-center">Write feedback:</h1>
+		<hr>
+		<form th:action="@{${id}}" th:object="${feedbackdto}" method="POST"
+			enctype="multipart/form-data">
+			<div class="form-center">
+				<div class="rating-area">
+					<input type="radio" id="rating_5" name="rating" value="5"
+						th:field="*{rating}"> <label for="rating_5"></label> <input
+						type="radio" id="rating_4" name="rating" value="4"
+						th:field="*{rating}"> <label for="rating_4"></label> <input
+						type="radio" id="rating_3" name="rating" value="3"
+						th:field="*{rating}"> <label for="rating_3"></label> <input
+						type="radio" id="rating_2" name="rating" value="2"
+						th:field="*{rating}"> <label for="rating_2"></label> <input
+						type="radio" id="rating_1" name="rating" value="1"
+						th:field="*{rating}"> <label for="rating_1"></label>
+				</div>
+			</div>
+			<div class="form-center">
+				<label for="comment"> Comment</label> <input type="text"
+					id="comment" name="comment" th:field="*{comment}" height="300"
+					class="form-control input-sm" value="${feedback.comment}" required />
+			</div>
+			<br />
+			<div class="form-center">
+				<div style="display: inline-block">
+					<input class="btn btn-light" type="submit" value="Add feedback" />
+					<input class="btn btn-light" type="reset" value="Reset">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

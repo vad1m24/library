@@ -1,0 +1,193 @@
+/*FORALL:*/
+h1 {
+	color: black;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table th, table td {
+	padding: 5px;
+}
+
+.grow:hover { transform: scale(1.7); }
+
+.shadow-img{
+	box-shadow: 10px 5px 5px grey;
+}
+
+.form-wrapper {
+	margin: 0 auto;
+	width: 810px;
+}
+
+.form-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+.form-center-horizontally {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+ 
+.header{
+	position: fixed;
+    right: 15px
+}
+
+.reverse{
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.footer {
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding: 10px;
+	width: 100%;
+}
+
+.login-button {
+	background: #ffffff;
+	color: #999999;
+	width: 50px;
+	height: 50px;
+	margin-left: 165px;
+	margin-top: -25px;
+	border: 5px solid #efefef;
+	border-radius: 50%;
+}
+
+.login-button:hover {
+	color: #555555;
+	transform: rotate(450deg);
+}
+
+.login-button-forgot {
+	margin-left: 500px;
+}
+
+/*FOR RATING STAR:*/
+.rating-area {
+    overflow: hidden;
+    width: 265px;
+    margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+    display: none;
+}
+.rating-area:not(:checked) > label {
+    float: right;
+    width: 42px;
+    padding: 0;
+    cursor: pointer;
+    font-size: 50px;
+    line-height: 50px;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+    content: '★';
+}
+.rating-area > input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+    position: relative;
+}
+
+/*FOR exit RATING STAR:*/
+.checked {
+	color: gold;
+}
+
+/*FOR FEEDBACKS:*/
+.container {
+	border: 2px solid #ccc;
+	background-color: #f8f9fa;
+	border-radius: 5px;
+	padding: 16px;
+	margin: 16px 0;
+}
+
+/* Clear floats after containers */
+.container::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Float images inside the container to the left. Add a right margin, and style the image as a circle */
+.container img {
+	float: left;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+/* Increase the font-size of a span element */
+.container span {
+	font-size: 20px;
+}
+
+/* Add media queries for responsiveness. This will center both the text and the image inside the container */
+@media ( max-width : 500px) {
+	.container {
+		text-align: center;
+	}
+	.container img {
+		margin: auto;
+		float: none;
+		display: block;
+	}
+}
+
+/*for banner size*/
+body, html {
+	height: 100%;
+}
+
+/* The image */
+.banner {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/banner.jpg");
+	height: 60%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+/* Place text in the middle of the image */
+.banner-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}

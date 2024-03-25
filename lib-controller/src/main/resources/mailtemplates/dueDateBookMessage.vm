@@ -1,0 +1,12 @@
+<html>
+    <body>
+    	<h3>Hello!</h3>
+        <pre>
+        Tomorrow is due date for book:
+        Title: ${name},
+        Author: ${author},
+        Please, don't forget to return or prolong book!
+        Thanks a lot!
+        </pre>
+    </body>
+</html>

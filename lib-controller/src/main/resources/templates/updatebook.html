@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Book page</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../../../">Home</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Book Info :</h1>
+		<br />
+		<div class="form-center">
+			<img th:if="${book.bookDetailsDto.picture}"
+				th:src="@{${book.bookDetailsDto.picture}}" height="200" alt="Cover" />
+			<img th:unless="${book.bookDetailsDto.picture}"
+				src="http://localhost:8080/img/coverDefault.jpg" height="200"
+				alt="Cover" />
+		</div>
+		<form th:action="@{${book.id}}" th:object="${book}" method="POST"
+			enctype="multipart/form-data">
+
+			<div class="form-center">
+				<label for="name" class="font-weight-bold"> Name</label><input
+					type="text" id="name" name="name" th:field="*{bookDetailsDto.name}"
+					class="form-control input-sm" value="${book.bookDetailsDto.name}"
+					required />
+			</div>
+			<div class="form-center">
+				<label for="author" class="font-weight-bold">Author</label> <input
+					type="text" id="author" name="author"
+					th:field="*{bookDetailsDto.author}" class="form-control input-sm"
+					value="${book.bookDetailsDto.author}" required />
+			</div>
+			<div class="form-center">
+				<label for="description" class="font-weight-bold">
+					Description </label> <input type="text" id="description" name="description"
+					th:field="*{bookDetailsDto.description}"
+					class="form-control input-sm"
+					value="${book.bookDetailsDto.description}" required />
+			</div>
+			<br />
+			<div class="form-center">
+				<div class="form-center custom-file">
+					<label class="custom-file-label" for="imageUploader">Choose
+						cover</label> <input type="file" class="custom-file-input"
+						id="imageUploader" name="file" /> <small id="passwordHelpBlock"
+						class="form-text text-muted"> Please choose PNG file under
+						10MB</small>
+				</div>
+			</div>
+			<br />
+			<div class="form-center">
+				<input class="btn btn-light" type="submit" value="Update Book" />
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

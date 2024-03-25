@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Library - User page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../../">Home</a>
+		</header>
+		<hr />
+		<h3 class="form-center">My personal info:</h3>
+		<table>
+			<caption></caption>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+				</tr>
+			<tbody>
+				<tr>
+					<td rowspan="3"><span th:if="${user.img == null}"> <img
+                            src="http://localhost:8080/img/avatarDefault.png" height="300"
+                            alt="Avatar" />
+                    </span> <span th:unless="${user.img == null}"><img
+                            th:src="@{'data:image/png;base64,' + ${user.img}}" height="300"
+                            alt="Avatar" /></span></td>
+
+					<td class="font-weight-bold">Name</td>
+					<td th:text="${user.username}"></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Email</td>
+					<td th:text="${user.email}"></td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Department</td>
+					<td th:text="${user.departmentName}"></td>
+				</tr>
+				<tr>
+					<td><a sec:authorize="isAuthenticated()"
+						th:href="@{'edit/' + ${user.id}}" class="btn btn-light">Edit </a>
+						<a sec:authorize="hasRole('ADMIN')"
+						th:href="@{'setrole/' + ${user.id}}" class="btn btn-light">Set
+							Role</a></td>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

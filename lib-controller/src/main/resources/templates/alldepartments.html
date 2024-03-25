@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Departments page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../">Home</a> | <a href="adddepartment">Add Department</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Our Departments:</h1>
+		<table class="table">
+			<caption></caption>
+			<thead>
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Name</th>
+					<th scope="col">#</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<tr th:each="department : ${departmentList}">
+					<td th:text="${department.id}"></td>
+					<td th:text="${department.name}"></td>
+					<td><a th:href="@{${department.id}}">See more</a> <br />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Users page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../">Home</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Our Users:</h1>
+		<table class="table">
+			<caption></caption>
+			<thead>
+				<tr>
+					<th scope="col">User name</th>
+					<th scope="col">Photo</th>
+					<th scope="col">Email</th>
+					<th scope="col">Department</th>
+					<th scope="col">#</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<tr th:each="user : ${userList}">
+					<td th:text="${user.username}"></td>
+					<td><img th:if="${user.img}"
+						th:src="@{'data:image/png;base64,' + ${user.img}}" height="300"
+						alt="Avatar" /> <img th:unless="${user.img}"
+						src="http://localhost:8080/img/avatarDefault.png" height="300"
+						alt="Avatar" /></td>
+					<td th:text="${user.email}"></td>
+					<td th:text="${user.departmentName}"></td>
+					<td><a th:href="@{${user.id}}">See more</a> <br />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

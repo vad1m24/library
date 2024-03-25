@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Mail To Admin</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper" style="padding: 50px 0">
+		<h1 class="form-center">Write feedback:</h1>
+		<hr />
+		<form action="thankU" method="get">
+			<div class="form-center">
+				<label for="email"> Your email: <input type="email"
+					id="email" name="email" class="form-control inputdefault" required />
+				</label>
+			</div>
+			<br />
+			<div class="form-center">
+				<label for="message"> Feedback: <input type="text"
+					id="message" name="message" class="form-control inputlg" required />
+				</label>
+			</div>
+			<br />
+			<div class="form-center">
+				<div style="display: inline-block">
+					<input type="submit" value="Send"> <input type="reset"
+						value="Reset">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

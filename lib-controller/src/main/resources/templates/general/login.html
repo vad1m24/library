@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Please login</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+	rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper" style="padding: 50px 0">
+		<h1 class="form-center">Please login:</h1>
+		<hr />
+		<form th:action="@{../login}" method="post">
+			<div class="form-center">
+				<div class="form-group col-md-6">
+					<label for="email" class="sr-only">Email</label> <input
+						type="email" name="email" id="email" class="form-control"
+						placeholder="Email" required />
+				</div>
+				<div class="form-group col-md-6">
+					<label for="password" class="sr-only">Password</label> <input
+						type="password" name="password" id="password" class="form-control"
+						placeholder="Password" required />
+				</div>
+				<div class="form-center">
+					<label for="remember_me">Keep me logged in <input
+						type="checkbox" id="remember_me" name="_remember_me"
+						th:checked="true" /></label>
+				</div>
+				<br />
+				<div class="form-group col-md-6">
+					<button type="submit" class="login-button">
+						<em class="fa fa-chevron-right"></em>
+					</button>
+				</div>
+				<br />
+				<div class="form-center">
+					<p>
+						forgot your password? <a href="/forgotPassword">click here</a>
+					</p>
+					<p>
+						new user? <a href="users/adduser">create new account</a>
+					</p>
+				</div>
+			</div>
+		</form>
+		<div class="form-center">
+			<form action="/signin/facebook" method="post">
+				<input type="hidden" name="scope" value="email, public_profile" />
+				<input type="image"
+					th:src="@{'http://localhost:8080/img/facebookIcon.png'}"
+					height="70" alt="Sign In With Facebook">
+			</form>
+		</div>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

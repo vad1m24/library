@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Set Role page</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head> <div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../../../">Home</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Set role:</h1>
+		<hr />
+		<form th:action="@{${id}}" th:object="${dto}" method="POST">
+			<div class="form-center">
+				<label for="role">Role</label> <select
+					class="custom-select my-1" id="role"
+					th:object="${dto}" th:field="*{name}" >
+					<option hidden="" selected value=""></option>
+					<option th:each="role : ${allroles}"
+						th:value="${role.name}" th:text="${role.name}"></option>
+				</select>
+			</div>
+			<br />
+			<div class="form-center">
+				<input type="submit" value="Update Profile" />
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

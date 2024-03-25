@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Library - Home page</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="m-md-3 reverse">
+	<header>
+		<a sec:authorize="!isAuthenticated()" href="../../login">Sign In |
+		</a><a sec:authorize="!isAuthenticated()" href="../../users/adduser">Sign
+			Up</a><a sec:authorize="isAuthenticated()" href="../../logout">Sign
+			Out</a> <a sec:authorize="hasRole('ADMIN')" href="../../admin"> |
+			Admin page</a>
+	</header>
+</div>
+<body>
+	<div class="banner m-md-3 ">
+		<div class="banner-text">
+			<h1 class="text-light">Our library</h1>
+			<p>Click here and see what we have for you</p>
+			<a class="btn btn-light" href="books/">See details</a>
+		</div>
+	</div>
+	<div sec:authorize="isAuthenticated()"
+		class="overflow-hidden m-md-3 text-center bg-light">
+		<div class="col-md-5 p-lg-5 mx-auto my-5">
+			<h1>My profile</h1>
+			<a class="btn btn-outline-secondary" href="users/my/{id}">See
+				details</a>
+		</div>
+	</div>
+</body>
+<footer class="footer">
+	<a href="javascript:history.back()">Go back </a>
+	<div>&#169; 2024 RuVa</div>
+	<div>
+		Feedback? <a href="../../mailToAdmin">Get in touch</a>
+	</div>
+</footer>
+</html>

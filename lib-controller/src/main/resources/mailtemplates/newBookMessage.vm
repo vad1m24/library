@@ -1,0 +1,11 @@
+<html>
+    <body>
+    	<h3>Hello!</h3>
+        <pre>
+        New book was added to library:
+        Title: ${name},
+        Author: ${author},
+        Thanks a lot!
+        </pre>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Add book</title>
+<link href="../css/styles.css" rel="stylesheet" />
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper" style="padding: 50px 0">
+		<h1 class="form-center">Add book to library:</h1>
+		<hr />
+		<form th:action="@{${id}}" th:object="${bookdto}" method="POST">
+			<div class="form-center">
+				<div class="form-group col-md-6">
+					<label for="isbn">ISBN</label> <input type="text" id="isbn"
+						th:field="*{isbn}" class="form-control input-sm" required />
+				</div>
+				<div class="form-group col-md-6">
+					<label for="department">Department</label> <select
+						class="custom-select my-1 " id="department"
+						th:object="${departmentdto}" th:field="*{name}" required>
+						<option hidden="" selected value=""></option>
+						<option th:each="department : ${departmentsList}"
+							th:value="${department.name}" th:text="${department.name}"
+							th:if="${department.name} != 'default'"></option>
+					</select>
+				</div>
+			</div>
+			<br />
+			<div class="form-center">
+				<div style="display: inline-block">
+					<input class="btn btn-light" type="submit" value="Add"> <input
+						type="reset" class="btn btn-light" value="Reset">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

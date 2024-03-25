@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Add department</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper" style="padding: 50px 0">
+		<h1 class="form-center">Add Department:</h1>
+		<hr />
+		<form th:action="@{${id}}" th:object="${departmentdto}" method="POST">
+			<div class="form-center">
+				<label for="name"> Name <input type="text" id="name"
+					name="name" th:field="*{name}" class="form-control input-sm"
+					required />
+				</label>
+			</div>
+			<br />
+			<div class="form-center">
+				<div style="display: inline-block">
+					<input class="btn btn-light" type="submit" value="Add"> <input
+						class="btn btn-light" type="reset" value="Reset">
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>

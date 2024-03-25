@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet author="ruva" id="01">
+	<insert tableName="department">
+            <column name="name" type="varchar(255)" value="default" />
+        </insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="QA" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="BA" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="HR" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="SALES" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="IOS" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="ANDROID" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="CLOUD" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="RIA" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="MWA" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="JED" />
+		</insert>
+		<insert tableName="department">
+			<column name="name" type="varchar(255)" value="DESIGN" />
+		</insert>
+	</changeSet>
+</databaseChangeLog> 

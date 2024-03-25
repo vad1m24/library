@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet author="ruva" id="01">
+		<addForeignKeyConstraint
+			constraintName="fk_user2order_book" referencedTableName="user"
+			referencedColumnNames="id" baseColumnNames="user_id"
+			baseTableName="order_book" />
+		<addForeignKeyConstraint
+			constraintName="fk_book2order_book" referencedTableName="book"
+			referencedColumnNames="id" baseColumnNames="book_id"
+			baseTableName="order_book" />
+		<addForeignKeyConstraint
+			constraintName="fk_user2feedback" referencedTableName="user"
+			referencedColumnNames="id" baseColumnNames="user_id"
+			baseTableName="feedback" />
+		<addForeignKeyConstraint
+			constraintName="fk_book2feedback" referencedTableName="book"
+			referencedColumnNames="id" baseColumnNames="book_id"
+			baseTableName="feedback" />
+		<addForeignKeyConstraint
+			constraintName="fk_user2user_role" referencedTableName="user"
+			referencedColumnNames="id" baseColumnNames="user_id"
+			baseTableName="user_role" />
+		<addForeignKeyConstraint
+			constraintName="fk_role2user_role" referencedTableName="role"
+			referencedColumnNames="id" baseColumnNames="role_id"
+			baseTableName="user_role" />
+		<addForeignKeyConstraint
+			constraintName="fk_department2department_book"
+			referencedTableName="department" referencedColumnNames="id"
+			baseColumnNames="department_id" baseTableName="department_book" />
+		<addForeignKeyConstraint
+			constraintName="fk_book2department_book"
+			referencedTableName="book" referencedColumnNames="id"
+			baseColumnNames="book_id" baseTableName="department_book" />
+	</changeSet>
+</databaseChangeLog> 

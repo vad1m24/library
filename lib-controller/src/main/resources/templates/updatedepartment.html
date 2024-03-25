@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+<title>Library - Department page</title>
+<link href="../../css/styles.css" rel="stylesheet" />
+<link href="../../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<div class="header" th:insert="general/home :: header"></div>
+<body>
+	<div class="form-wrapper">
+		<header class="m-md-3">
+			<a href="../../../">Home</a>
+		</header>
+		<hr />
+		<h1 class="form-center">Department Info :</h1>
+		<hr />
+		<form th:action="@{${department.id}}" th:object="${department}"
+			method="POST" enctype="multipart/form-data">
+
+			<div class="form-center">
+				<label for="name"> Name <input type="text" id="name"
+					name="name" th:field="*{name}" class="form-control input-sm"
+					value="${department.name}" required />
+				</label>
+			</div>
+
+			<div class="form-center">
+				<input class="btn btn-light" type="submit" value="Update Deparment" />
+			</div>
+		</form>
+	</div>
+	<hr />
+</body>
+<div th:insert="general/home :: footer"></div>
+</html>
